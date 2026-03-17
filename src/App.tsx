@@ -4,15 +4,39 @@
  */
 
 import React from 'react';
-import { Instagram, MessageCircle, MapPin, Palmtree, PartyPopper, ArrowRight } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Instagram, MessageCircle, MapPin, Palmtree, PartyPopper, ArrowRight, Leaf } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 export default function App() {
   const INSTAGRAM_URL = "https://www.instagram.com/cocoart.fresh?igsh=MXhyNHhlM2x6b3JvMw==";
   const WHATSAPP_URL = "https://whatsapp.com/channel/0029VaAhv4T2ZjCrptjQ4k0y";
 
+  const { scrollYProgress } = useScroll();
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -400]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 400]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -250]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, 250]);
+  const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 180]);
+  const rotate2 = useTransform(scrollYProgress, [0, 1], [0, -180]);
+
   return (
-    <div className="min-h-screen bg-[#fdf8f6] font-sans selection:bg-green-200 selection:text-green-900">
+    <div className="min-h-screen bg-[#fdf8f6] font-sans selection:bg-green-200 selection:text-green-900 relative">
+      {/* Scroll Effects Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <motion.div style={{ y: y1, rotate: rotate1 }} className="absolute top-[20%] left-[5%] text-green-900/10">
+          <Leaf size={64} />
+        </motion.div>
+        <motion.div style={{ y: y2, rotate: rotate2 }} className="absolute top-[60%] right-[10%] text-teal-900/10">
+          <Palmtree size={80} />
+        </motion.div>
+        <motion.div style={{ y: y3, rotate: rotate1 }} className="absolute top-[80%] left-[15%] text-green-800/10">
+          <Leaf size={48} />
+        </motion.div>
+        <motion.div style={{ y: y4, rotate: rotate2 }} className="absolute top-[30%] right-[8%] text-teal-800/10">
+          <Leaf size={56} />
+        </motion.div>
+      </div>
+
       {/* Navigation */}
       <nav className="absolute top-0 w-full z-50 p-6 flex justify-between items-center">
         <div className="text-2xl font-display font-bold text-green-900 tracking-tight">
@@ -43,8 +67,8 @@ export default function App() {
         {/* Background Elements */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1526401485004-46910ecc8e51?q=80&w=1920&auto=format&fit=crop" 
-            alt="Tropical Beach Background" 
+            src="https://img.sanishtech.com/u/e999d4df0861ce5469783da625a3e649.jpg" 
+            alt="Fresh Coconuts Background" 
             className="w-full h-full object-cover opacity-30"
             referrerPolicy="no-referrer"
           />
@@ -154,14 +178,14 @@ export default function App() {
             className="grid grid-cols-2 gap-4"
           >
             <img 
-              src="https://images.unsplash.com/photo-1525995015-593dba282832?q=80&w=400&h=500&auto=format&fit=crop" 
-              alt="Fresh Coconut" 
+              src="https://img.sanishtech.com/u/de8d6ac27bb31d35370f32a166d0d84c.jpg" 
+              alt="Fresh Coconut Drink" 
               className="rounded-2xl w-full h-64 object-cover shadow-md mt-8"
               referrerPolicy="no-referrer"
             />
             <img 
-              src="https://images.unsplash.com/photo-1530103862676-de8892b12a15?q=80&w=400&h=500&auto=format&fit=crop" 
-              alt="Event Setup" 
+              src="https://img.sanishtech.com/u/bc972910f17cd9e11142c226ada8b57c.jpg" 
+              alt="Coconut on the beach" 
               className="rounded-2xl w-full h-64 object-cover shadow-md"
               referrerPolicy="no-referrer"
             />
@@ -179,10 +203,10 @@ export default function App() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              "https://images.unsplash.com/photo-1620021465593-9121f1e29080?q=80&w=600&h=600&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1559564484-e48b3e040ff4?q=80&w=600&h=600&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&h=600&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1596649284812-788e91242337?q=80&w=600&h=600&auto=format&fit=crop"
+              "https://img.sanishtech.com/u/e43b391fd2e173c5609f55c6a8cb015f.jpg",
+              "https://img.sanishtech.com/u/e649f0acd816132c41769594d62f1951.jpg",
+              "https://img.sanishtech.com/u/e999d4df0861ce5469783da625a3e649.jpg",
+              "https://img.sanishtech.com/u/de8d6ac27bb31d35370f32a166d0d84c.jpg"
             ].map((imgSrc, i) => (
               <a 
                 key={i} 
