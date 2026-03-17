@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Instagram, MessageCircle, MapPin, Palmtree, PartyPopper, ArrowRight, Leaf } from 'lucide-react';
+import { Instagram, MessageCircle, MapPin, Palmtree, PartyPopper, ArrowRight, Leaf, Sun, Droplets } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'motion/react';
 
 export default function App() {
@@ -16,24 +16,70 @@ export default function App() {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 400]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -250]);
   const y4 = useTransform(scrollYProgress, [0, 1], [0, 250]);
+  const y5 = useTransform(scrollYProgress, [0, 1], [0, -600]);
+  const y6 = useTransform(scrollYProgress, [0, 1], [0, 600]);
+  const y7 = useTransform(scrollYProgress, [0, 1], [0, -800]);
+  const y8 = useTransform(scrollYProgress, [0, 1], [0, 800]);
+  
+  const x1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const x2 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const x3 = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const x4 = useTransform(scrollYProgress, [0, 1], [0, -300]);
+
   const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 180]);
   const rotate2 = useTransform(scrollYProgress, [0, 1], [0, -180]);
+  const rotate3 = useTransform(scrollYProgress, [0, 1], [0, 360]);
+  
+  const opacity1 = useTransform(scrollYProgress, [0, 0.5, 1], [0.05, 0.15, 0.05]);
+  const opacity2 = useTransform(scrollYProgress, [0, 0.5, 1], [0.1, 0.25, 0.1]);
+  const scale1 = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.2, 0.8]);
+  const scale2 = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.5, 1]);
 
   return (
     <div className="min-h-screen bg-[#fdf8f6] font-sans selection:bg-green-200 selection:text-green-900 relative">
       {/* Scroll Effects Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <motion.div style={{ y: y1, rotate: rotate1 }} className="absolute top-[20%] left-[5%] text-green-900/10">
+        {/* Existing Elements */}
+        <motion.div style={{ y: y1, x: x1, rotate: rotate1 }} className="absolute top-[20%] left-[5%] text-green-900/10">
           <Leaf size={64} />
         </motion.div>
-        <motion.div style={{ y: y2, rotate: rotate2 }} className="absolute top-[60%] right-[10%] text-teal-900/10">
+        <motion.div style={{ y: y2, x: x2, rotate: rotate2 }} className="absolute top-[60%] right-[10%] text-teal-900/10">
           <Palmtree size={80} />
         </motion.div>
-        <motion.div style={{ y: y3, rotate: rotate1 }} className="absolute top-[80%] left-[15%] text-green-800/10">
+        <motion.div style={{ y: y3, x: x3, rotate: rotate1 }} className="absolute top-[80%] left-[15%] text-green-800/10">
           <Leaf size={48} />
         </motion.div>
-        <motion.div style={{ y: y4, rotate: rotate2 }} className="absolute top-[30%] right-[8%] text-teal-800/10">
+        <motion.div style={{ y: y4, x: x4, rotate: rotate2 }} className="absolute top-[30%] right-[8%] text-teal-800/10">
           <Leaf size={56} />
+        </motion.div>
+        <motion.div style={{ y: y5, rotate: rotate1, opacity: opacity1, scale: scale1 }} className="absolute top-[10%] right-[25%] text-green-700/10">
+          <Palmtree size={100} />
+        </motion.div>
+        <motion.div style={{ y: y6, rotate: rotate2, opacity: opacity1, scale: scale1 }} className="absolute top-[70%] left-[25%] text-teal-700/10">
+          <Leaf size={72} />
+        </motion.div>
+        <motion.div style={{ y: y1, rotate: rotate2, opacity: opacity1 }} className="absolute top-[45%] left-[45%] text-green-600/5">
+          <Palmtree size={120} />
+        </motion.div>
+
+        {/* New Elements */}
+        <motion.div style={{ y: y7, x: x2, rotate: rotate3, opacity: opacity2, scale: scale2 }} className="absolute top-[5%] left-[40%] text-yellow-500/10">
+          <Sun size={90} />
+        </motion.div>
+        <motion.div style={{ y: y8, x: x1, rotate: rotate1, opacity: opacity2 }} className="absolute top-[85%] right-[40%] text-blue-500/10">
+          <Droplets size={60} />
+        </motion.div>
+        <motion.div style={{ y: y2, x: x3, rotate: rotate3, opacity: opacity1 }} className="absolute top-[40%] right-[30%] text-green-800/10">
+          <Leaf size={40} />
+        </motion.div>
+        <motion.div style={{ y: y5, x: x4, rotate: rotate2, opacity: opacity2, scale: scale1 }} className="absolute top-[55%] left-[10%] text-teal-600/10">
+          <Droplets size={50} />
+        </motion.div>
+        <motion.div style={{ y: y4, x: x1, rotate: rotate1, opacity: opacity1, scale: scale2 }} className="absolute top-[15%] right-[50%] text-green-700/10">
+          <Palmtree size={70} />
+        </motion.div>
+        <motion.div style={{ y: y7, x: x4, rotate: rotate2, opacity: opacity1 }} className="absolute top-[75%] left-[60%] text-yellow-600/10">
+          <Sun size={45} />
         </motion.div>
       </div>
 
@@ -242,17 +288,22 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#14532d] text-green-50 py-12 text-center">
+      <footer className="bg-[#14532d] text-green-50 py-12 text-center relative z-10">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-display font-bold mb-6">CocoArt.Fresh</h2>
           <p className="mb-8 text-green-200">Fresh customized coconuts for events & on the road.</p>
-          <div className="flex justify-center gap-6 mb-8">
+          <div className="flex justify-center items-center gap-6 mb-8">
             <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
               <Instagram size={24} />
             </a>
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
               <MessageCircle size={24} />
             </a>
+            <div className="w-px h-6 bg-green-700/50 hidden sm:block"></div>
+            <div className="flex items-center gap-2 text-green-200 hover:text-white transition-colors cursor-default">
+              <MapPin size={20} />
+              <span className="font-medium">Ahmedabad</span>
+            </div>
           </div>
           <p className="text-sm text-green-400/60">
             &copy; {new Date().getFullYear()} CocoArt.Fresh. All rights reserved.
