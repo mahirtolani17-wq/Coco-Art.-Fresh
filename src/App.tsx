@@ -9,14 +9,14 @@ import { motion } from 'motion/react';
 
 export default function App() {
   const INSTAGRAM_URL = "https://www.instagram.com/cocoart.fresh?igsh=MXhyNHhlM2x6b3JvMw==";
-  const WHATSAPP_URL = "https://wa.me/message/YOUR_WHATSAPP_LINK"; // Replace with actual WA channel/number
+  const WHATSAPP_URL = "https://whatsapp.com/channel/0029VaAhv4T2ZjCrptjQ4k0y";
 
   return (
     <div className="min-h-screen bg-[#fdf8f6] font-sans selection:bg-green-200 selection:text-green-900">
       {/* Navigation */}
       <nav className="absolute top-0 w-full z-50 p-6 flex justify-between items-center">
         <div className="text-2xl font-display font-bold text-green-900 tracking-tight">
-          Coco Art
+          CocoArt.Fresh
         </div>
         <div className="flex gap-4">
           <a 
@@ -43,7 +43,7 @@ export default function App() {
         {/* Background Elements */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://picsum.photos/seed/tropicalbeach/1920/1080" 
+            src="https://images.unsplash.com/photo-1526401485004-46910ecc8e51?q=80&w=1920&auto=format&fit=crop" 
             alt="Tropical Beach Background" 
             className="w-full h-full object-cover opacity-30"
             referrerPolicy="no-referrer"
@@ -154,13 +154,13 @@ export default function App() {
             className="grid grid-cols-2 gap-4"
           >
             <img 
-              src="https://picsum.photos/seed/coconutdrink/400/500" 
+              src="https://images.unsplash.com/photo-1525995015-593dba282832?q=80&w=400&h=500&auto=format&fit=crop" 
               alt="Fresh Coconut" 
               className="rounded-2xl w-full h-64 object-cover shadow-md mt-8"
               referrerPolicy="no-referrer"
             />
             <img 
-              src="https://picsum.photos/seed/eventparty/400/500" 
+              src="https://images.unsplash.com/photo-1530103862676-de8892b12a15?q=80&w=400&h=500&auto=format&fit=crop" 
               alt="Event Setup" 
               className="rounded-2xl w-full h-64 object-cover shadow-md"
               referrerPolicy="no-referrer"
@@ -173,12 +173,17 @@ export default function App() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-display font-bold text-[#14532d] mb-4">The Coco Art Vibe</h2>
+            <h2 className="text-3xl font-display font-bold text-[#14532d] mb-4">The CocoArt.Fresh Vibe</h2>
             <p className="text-[#4a3f3c]">Follow us on Instagram for daily tropical updates</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((i) => (
+            {[
+              "https://images.unsplash.com/photo-1620021465593-9121f1e29080?q=80&w=600&h=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1559564484-e48b3e040ff4?q=80&w=600&h=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&h=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1596649284812-788e91242337?q=80&w=600&h=600&auto=format&fit=crop"
+            ].map((imgSrc, i) => (
               <a 
                 key={i} 
                 href={INSTAGRAM_URL} 
@@ -187,8 +192,8 @@ export default function App() {
                 className="group relative aspect-square overflow-hidden rounded-xl bg-zinc-100 block"
               >
                 <img
-                  src={`https://picsum.photos/seed/tropicalcoco${i}/600/600`}
-                  alt={`Instagram vibe ${i}`}
+                  src={imgSrc}
+                  alt={`Instagram vibe ${i + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
@@ -215,7 +220,7 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-[#14532d] text-green-50 py-12 text-center">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-display font-bold mb-6">Coco Art</h2>
+          <h2 className="text-2xl font-display font-bold mb-6">CocoArt.Fresh</h2>
           <p className="mb-8 text-green-200">Fresh customized coconuts for events & on the road.</p>
           <div className="flex justify-center gap-6 mb-8">
             <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
@@ -226,7 +231,7 @@ export default function App() {
             </a>
           </div>
           <p className="text-sm text-green-400/60">
-            &copy; {new Date().getFullYear()} Coco Art. All rights reserved.
+            &copy; {new Date().getFullYear()} CocoArt.Fresh. All rights reserved.
           </p>
         </div>
       </footer>
